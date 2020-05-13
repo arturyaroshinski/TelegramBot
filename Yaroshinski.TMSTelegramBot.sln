@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaroshinski.Bot", "Yaroshinski.Bot\Yaroshinski.Bot.csproj", "{C0298428-563F-4B4F-89D9-B01AF41A8F9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaroshinski.Core", "Yaroshinski.Core\Yaroshinski.Core.csproj", "{21AFA392-E2B3-4198-A71B-96AA47F8DFBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0298428-563F-4B4F-89D9-B01AF41A8F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0298428-563F-4B4F-89D9-B01AF41A8F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0298428-563F-4B4F-89D9-B01AF41A8F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0298428-563F-4B4F-89D9-B01AF41A8F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21AFA392-E2B3-4198-A71B-96AA47F8DFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21AFA392-E2B3-4198-A71B-96AA47F8DFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21AFA392-E2B3-4198-A71B-96AA47F8DFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21AFA392-E2B3-4198-A71B-96AA47F8DFBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A428DAFB-53DF-4189-B10C-578553435E2B}
+	EndGlobalSection
+EndGlobal
