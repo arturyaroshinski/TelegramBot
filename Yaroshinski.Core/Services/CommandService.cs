@@ -19,8 +19,7 @@ namespace Yaroshinski.Core.Services
                 // TODO: add new commands.
 
                 new StartCommand(),
-                //new AboutCommand(),
-                //new LinkCommand()
+                new AdviceCommand(),
             };
         }
 
