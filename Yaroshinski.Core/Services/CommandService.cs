@@ -20,6 +20,7 @@ namespace Yaroshinski.Core.Services
                 
                 new StartCommand(),
                 new AdviceCommand(),
+                new KeyCommand(),
             };
         }
 

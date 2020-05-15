@@ -18,23 +18,24 @@ namespace Yaroshinski.Core.Commands
         // Return array of Spil objects
         private async Task<Slip[]> GetSlipsAsync(string key)
         {
-            // TODO: add try catch block
+            // TODO: add try catch block.
             var httpClient = new HttpClient();
 
             key = string.Format("https://api.adviceslip.com/advice/search/{0}", key);
             var response = await httpClient.GetAsync(key);
             var content  = await response.Content.ReadAsStringAsync();
+            response.EnsureSuccessStatusCode();
 
             var searchObjects = JsonConvert.DeserializeObject<SearchObject>(content);
 
-            return (Slip[])searchObjects.Slips;
+            return searchObjects.Slips;
         }
 
         /// <inheritdoc/>
         public async Task Execute(Message message, ITelegramBotClient client)
         {
             var chatId = message.Chat.Id;
-            var key = message.Text.Trim().Substring(4, message.Text.Trim().Length);
+            var key = message.Text.Trim().Substring(5);
 
             Slip[] slips = await GetSlipsAsync(key);
             foreach (var slip in slips)

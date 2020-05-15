@@ -15,6 +15,6 @@ namespace Yaroshinski.Core.Models
         /// <summary>
         /// Collection of Slip objects.
         /// </summary>
-        public IEnumerable<Slip> Slips { get; set; }
+        public Slip[] Slips { get; set; }
     }
 }
