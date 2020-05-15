@@ -31,6 +31,7 @@ namespace Yaroshinski.Bot
                 options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
+            services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

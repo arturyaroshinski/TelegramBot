@@ -5,6 +5,7 @@ using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Yaroshinski.Core.Interfaces;
+using Yaroshinski.Core.Models;
 
 namespace Yaroshinski.Core.Commands
 {
@@ -15,15 +16,15 @@ namespace Yaroshinski.Core.Commands
         public string Name { get; } = "/advice";
 
         // Return random advice as string.
-        private async Task<string> GetAdvice()
+        private async Task<string> GetAdviceAsync()
         {
+            // TODO: add try catch block.
             var httpClient = new HttpClient();
 
             var respone = await httpClient.GetAsync("https://api.adviceslip.com/advice");
             var content = await respone.Content.ReadAsStringAsync();
             content = content.Substring(8, content.Length - 9);
 
-            // TODO: slip
             var slip = JsonConvert.DeserializeObject<Slip>(content);
             return slip.Advice;
         }
@@ -32,7 +33,7 @@ namespace Yaroshinski.Core.Commands
         public async Task Execute(Message message, ITelegramBotClient client)
         {
             var chatId = message.Chat.Id;
-            var advice = await GetAdvice();
+            var advice = await GetAdviceAsync();
             await client.SendTextMessageAsync(chatId, advice);
         }
 

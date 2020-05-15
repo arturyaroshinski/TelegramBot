@@ -1,4 +1,4 @@
-﻿namespace Yaroshinski.Core
+﻿namespace Yaroshinski.Core.Models
 {
     /// <summary>
     /// Slip object.

@@ -16,7 +16,7 @@ namespace Yaroshinski.Core.Commands
         public async Task Execute(Message message, ITelegramBotClient client)
         {
             var chatId = message.Chat.Id;
-            await client.SendTextMessageAsync(chatId, $"Hello dear friend!");
+            await client.SendTextMessageAsync(chatId, $"Hello @{message.From.Username}! Type '/advice' for getting random advice.");
         }
 
         /// <inheritdoc/>
