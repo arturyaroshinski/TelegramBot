@@ -1,6 +1,14 @@
 ﻿namespace Yaroshinski.Core.Models
 {
     /// <summary>
+    /// Slip request object.
+    /// </summary>
+    public class SlipRequest
+    {
+        public Slip Slip { get; set; }
+    }
+
+    /// <summary>
     /// Slip object.
     /// </summary>
     public class Slip

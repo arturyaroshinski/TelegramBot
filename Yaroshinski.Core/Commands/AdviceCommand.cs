@@ -21,12 +21,12 @@ namespace Yaroshinski.Core.Commands
             // TODO: add try catch block.
             var httpClient = new HttpClient();
 
-            var respone = await httpClient.GetAsync("https://api.adviceslip.com/advice");
-            var content = await respone.Content.ReadAsStringAsync();
-            content = content.Substring(8, content.Length - 9);
+            var response = await httpClient.GetAsync("https://api.adviceslip.com/advice");
+            var content = await response.Content.ReadAsStringAsync();
+            response.EnsureSuccessStatusCode();
 
-            var slip = JsonConvert.DeserializeObject<Slip>(content);
-            return slip.Advice;
+            var slip = JsonConvert.DeserializeObject<SlipRequest>(content);
+            return slip.Slip.Advice;
         }
 
         /// <inheritdoc/>
