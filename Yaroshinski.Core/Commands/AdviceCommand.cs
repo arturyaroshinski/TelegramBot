@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -18,15 +19,20 @@ namespace Yaroshinski.Core.Commands
         // Return random advice as string.
         private async Task<string> GetAdviceAsync()
         {
-            // TODO: add try catch block.
             var httpClient = new HttpClient();
 
-            var response = await httpClient.GetAsync("https://api.adviceslip.com/advice");
-            var content = await response.Content.ReadAsStringAsync();
-            response.EnsureSuccessStatusCode();
-
-            var slip = JsonConvert.DeserializeObject<SlipRequest>(content);
-            return slip.Slip.Advice;
+            try
+            {
+                var response = await httpClient.GetAsync("https://api.adviceslip.com/advice");
+                var content = await response.Content.ReadAsStringAsync();
+                response.EnsureSuccessStatusCode();
+                var slip = JsonConvert.DeserializeObject<SlipRequest>(content);
+                return slip.Slip.Advice;
+            }
+            catch (Exception)
+            {
+                return "Error: advice not received for some reason.";
+            }
         }
 
         /// <inheritdoc/>

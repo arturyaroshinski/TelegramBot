@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Yaroshinski.Core.Models
+﻿namespace Yaroshinski.Core.Models
 {
     /// <summary>
     /// A search object contains the results of a slip search query.

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -18,17 +19,26 @@ namespace Yaroshinski.Core.Commands
         // Return array of Spil objects
         private async Task<Slip[]> GetSlipsAsync(string key)
         {
-            // TODO: add try catch block.
             var httpClient = new HttpClient();
 
-            key = string.Format("https://api.adviceslip.com/advice/search/{0}", key);
-            var response = await httpClient.GetAsync(key);
-            var content  = await response.Content.ReadAsStringAsync();
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                key = string.Format("https://api.adviceslip.com/advice/search/{0}", key);
+                var response = await httpClient.GetAsync(key);
+                var content = await response.Content.ReadAsStringAsync();
+                response.EnsureSuccessStatusCode();
 
-            var searchObjects = JsonConvert.DeserializeObject<SearchObject>(content);
+                var searchObjects = JsonConvert.DeserializeObject<SearchObject>(content);
 
-            return searchObjects.Slips;
+                return searchObjects.Slips;
+            }
+            catch (Exception)
+            {
+                return new Slip[] 
+                {
+                    new Slip(){ Advice = $"No advices with word '{key}' was found"}
+                };
+            }
         }
 
         /// <inheritdoc/>
