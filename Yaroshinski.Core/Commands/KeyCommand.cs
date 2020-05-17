@@ -23,18 +23,23 @@ namespace Yaroshinski.Core.Commands
 
             try
             {
-                key = string.Format("https://api.adviceslip.com/advice/search/{0}", key);
-                var response = await httpClient.GetAsync(key);
+                var keyRequest = string.Format("https://api.adviceslip.com/advice/search/{0}", key);
+                var response = await httpClient.GetAsync(keyRequest);
                 var content = await response.Content.ReadAsStringAsync();
                 response.EnsureSuccessStatusCode();
 
                 var searchObjects = JsonConvert.DeserializeObject<SearchObject>(content);
 
+                if (searchObjects.Slips == null)
+                {
+                    throw new HttpRequestException();
+                }
+
                 return searchObjects.Slips;
             }
             catch (Exception)
             {
-                return new Slip[] 
+                return new Slip[]
                 {
                     new Slip(){ Advice = $"No advices with word '{key}' was found"}
                 };

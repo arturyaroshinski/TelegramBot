@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <ApplicationInsightsResourceId>/subscriptions/9c6a5537-157d-474e-a4e6-43e797524769/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Yaroshinski.Bot</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/9c6a5537-157d-474e-a4e6-43e797524769/resourcegroups/TelegramBot/providers/microsoft.insights/components/yaroshinskibot</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
