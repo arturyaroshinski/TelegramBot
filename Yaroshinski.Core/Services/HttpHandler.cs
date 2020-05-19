@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Flurl;
 using Flurl.Http;
-using Flurl;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Yaroshinski.Core.Models;
-using System.Linq;
 
 namespace Yaroshinski.Core.Services
 {
-     /// <summary>
-     /// Http request handler.
-     /// </summary>
+    /// <summary>
+    /// Http request handler.
+    /// </summary>
     class HttpHandler
     {
         /// <summary>
@@ -22,12 +20,12 @@ namespace Yaroshinski.Core.Services
         {
             try
             {
-                var response = await "https://api.adviceslip"
+                var response = await "https://api.adviceslip.com"
                     .AppendPathSegment("advice")
                     .GetAsync()
-                    .ReceiveJson<Slip>();
+                    .ReceiveJson<SlipRequest>();
 
-                return response.Advice;
+                return response.Slip.Advice;
             }
             catch (Exception)
             {
@@ -59,7 +57,7 @@ namespace Yaroshinski.Core.Services
                 {
                     key = " ";
                 }
-                return $"No advices with word '{key}' was found";
+                return $"No advices with word '{key}' was found.";
             }
         }
     }

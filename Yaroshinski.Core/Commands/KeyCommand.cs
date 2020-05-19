@@ -17,11 +17,27 @@ namespace Yaroshinski.Core.Commands
         public async Task Execute(Message message, ITelegramBotClient client)
         {
             var chatId = message.Chat.Id;
-            // TODO: рассплитить по пробелам
-            var key = message.Text.Replace(" ", "").Substring(4);
+            var key = GetKeyWord(message.Text);
+
             string advice = await HttpHandler.GetAdviceByKeyWordAsync(key);
 
             await client.SendTextMessageAsync(chatId, advice);
+        }
+
+        private string GetKeyWord(string text)
+        {
+            var words = text.Split(" ");
+            string key = string.Empty;
+
+            foreach (var word in words)
+            {
+                if (words.Length > 1 && word != "/key")
+                {
+                    key += word;
+                }
+            }
+
+            return key;
         }
 
         /// <inheritdoc/>
