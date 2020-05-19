@@ -1,12 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Yaroshinski.Core.Interfaces;
-using Yaroshinski.Core.Models;
+using Yaroshinski.Core.Services;
 
 namespace Yaroshinski.Core.Commands
 {
@@ -16,30 +13,11 @@ namespace Yaroshinski.Core.Commands
         /// <inheritdoc/>
         public string Name { get; } = "/advice";
 
-        // Return random advice as string.
-        private async Task<string> GetAdviceAsync()
-        {
-            var httpClient = new HttpClient();
-
-            try
-            {
-                var response = await httpClient.GetAsync("https://api.adviceslip.com/advice");
-                var content = await response.Content.ReadAsStringAsync();
-                response.EnsureSuccessStatusCode();
-                var slip = JsonConvert.DeserializeObject<SlipRequest>(content);
-                return slip.Slip.Advice;
-            }
-            catch (Exception)
-            {
-                return "Error: advice not received for some reason.";
-            }
-        }
-
         /// <inheritdoc/>
         public async Task Execute(Message message, ITelegramBotClient client)
         {
             var chatId = message.Chat.Id;
-            var advice = await GetAdviceAsync();
+            string advice = await HttpHandler.GetRandomAdviceAsync();
             await client.SendTextMessageAsync(chatId, advice);
         }
 
