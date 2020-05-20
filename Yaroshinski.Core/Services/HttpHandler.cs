@@ -3,6 +3,7 @@ using Flurl.Http;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Yaroshinski.Core.Constants;
 using Yaroshinski.Core.Models;
 
 namespace Yaroshinski.Core.Services
@@ -20,7 +21,7 @@ namespace Yaroshinski.Core.Services
         {
             try
             {
-                var response = await "https://api.adviceslip.com"
+                var response = await Constant.API_DOMAIN
                     .AppendPathSegment("advice")
                     .GetAsync()
                     .ReceiveJson<SlipRequest>();
@@ -29,7 +30,7 @@ namespace Yaroshinski.Core.Services
             }
             catch (Exception)
             {
-                return "Error: advice not received for some reason.";
+                return Constant.ERROR_MESSAGE;
             }
         }
 
@@ -42,7 +43,7 @@ namespace Yaroshinski.Core.Services
         {
             try
             {
-                var response = await "https://api.adviceslip.com"
+                var response = await Constant.API_DOMAIN
                     .AppendPathSegments("advice", "search", key)
                     .GetAsync()
                     .ReceiveJson<SearchObject>();
@@ -57,7 +58,7 @@ namespace Yaroshinski.Core.Services
                 {
                     key = " ";
                 }
-                return $"No advices with word '{key}' was found.";
+                return string.Format(Constant.NO_ADVICE_BY_KEY_WORD, key);
             }
         }
     }

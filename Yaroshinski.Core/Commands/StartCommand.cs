@@ -2,6 +2,7 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using Yaroshinski.Core.Constants;
 using Yaroshinski.Core.Interfaces;
 
 namespace Yaroshinski.Core.Commands
@@ -10,13 +11,13 @@ namespace Yaroshinski.Core.Commands
     public class StartCommand : ITelegramCommand
     {
         /// <inheritdoc/>
-        public string Name { get; } = "/start";
+        public string Name { get; } = Constant.START_COMMAND;
 
         /// <inheritdoc/>
         public async Task Execute(Message message, ITelegramBotClient client)
         {
             var chatId = message.Chat.Id;
-            await client.SendTextMessageAsync(chatId, $"Hello @{message.From.Username}! Type '/advice' for getting random advice.");
+            await client.SendTextMessageAsync(chatId, string.Format(Constant.SAY_HI, message.Chat.Username));
         }
 
         /// <inheritdoc/>

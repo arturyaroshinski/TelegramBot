@@ -2,6 +2,7 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using Yaroshinski.Core.Constants;
 using Yaroshinski.Core.Interfaces;
 using Yaroshinski.Core.Services;
 
@@ -11,7 +12,7 @@ namespace Yaroshinski.Core.Commands
     public class AdviceCommand : ITelegramCommand
     {
         /// <inheritdoc/>
-        public string Name { get; } = "/advice";
+        public string Name { get; } = Constant.ADVICE_COMMAND;
 
         /// <inheritdoc/>
         public async Task Execute(Message message, ITelegramBotClient client)
