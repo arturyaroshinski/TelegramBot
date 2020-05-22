@@ -33,7 +33,7 @@
         /// <summary>
         /// Message about lack of advice with key-word.
         /// </summary>
-        public const string NO_ADVICE_BY_KEY_WORD = "No advices with word '{0}' was found.";
+        public const string NO_ADVICE_BY_KEY_WORD = "No advices with word '{0}' was found. Or u type more than 1 word.";
 
         /// <summary>
         /// Domain link for API.

@@ -43,6 +43,11 @@ namespace Yaroshinski.Core.Services
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(key))
+                {
+                    throw new ArgumentException();
+                }
+
                 var response = await Constant.API_DOMAIN
                     .AppendPathSegments(Constant.RANDOM_ADVICE_PATH, Constant.SEARCH_ADVICE_PATH, key)
                     .GetAsync()
@@ -54,11 +59,7 @@ namespace Yaroshinski.Core.Services
             }
             catch (Exception)
             {
-                if (string.IsNullOrWhiteSpace(key))
-                {
-                    key = " ";
-                }
-                return string.Format(Constant.NO_ADVICE_BY_KEY_WORD, key);
+                return string.Format(Constant.NO_ADVICE_BY_KEY_WORD, " ");
             }
         }
     }

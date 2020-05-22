@@ -32,7 +32,7 @@ namespace Yaroshinski.Core.Commands
 
             foreach (var word in words)
             {
-                if (words.Length > 1 && word != Constant.KEY_COMMAND)
+                if (words.Length == 2 && word != Constant.KEY_COMMAND)
                 {
                     key += word;
                 }
