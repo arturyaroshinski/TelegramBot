@@ -39,5 +39,15 @@
         /// Domain link for API.
         /// </summary>
         public const string API_DOMAIN = "https://api.adviceslip.com";
+
+        /// <summary>
+        /// Part of GET request for random advice.
+        /// </summary>
+        public const string RANDOM_ADVICE_PATH = "advice";
+
+        /// <summary>
+        /// Part of GET request for advice by key-word.
+        /// </summary>
+        public const string SEARCH_ADVICE_PATH = "search";
     }
 }

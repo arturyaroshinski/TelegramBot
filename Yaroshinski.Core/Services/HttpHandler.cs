@@ -22,7 +22,7 @@ namespace Yaroshinski.Core.Services
             try
             {
                 var response = await Constant.API_DOMAIN
-                    .AppendPathSegment("advice")
+                    .AppendPathSegment(Constant.RANDOM_ADVICE_PATH)
                     .GetAsync()
                     .ReceiveJson<SlipRequest>();
 
@@ -44,7 +44,7 @@ namespace Yaroshinski.Core.Services
             try
             {
                 var response = await Constant.API_DOMAIN
-                    .AppendPathSegments("advice", "search", key)
+                    .AppendPathSegments(Constant.RANDOM_ADVICE_PATH, Constant.SEARCH_ADVICE_PATH, key)
                     .GetAsync()
                     .ReceiveJson<SearchObject>();
 
