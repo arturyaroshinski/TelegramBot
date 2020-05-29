@@ -16,11 +16,9 @@ namespace Yaroshinski.Core.Services
         {
             _commands = new List<ITelegramCommand>
             {
-                // TODO: add new commands.
-
                 new StartCommand(),
-                //new AboutCommand(),
-                //new LinkCommand()
+                new AdviceCommand(),
+                new KeyCommand(),
             };
         }
 

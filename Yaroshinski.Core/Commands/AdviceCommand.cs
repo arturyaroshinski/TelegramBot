@@ -4,20 +4,22 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Yaroshinski.Core.Constants;
 using Yaroshinski.Core.Interfaces;
+using Yaroshinski.Core.Services;
 
 namespace Yaroshinski.Core.Commands
 {
     /// <inheritdoc cref="ITelegramCommand"/>
-    public class StartCommand : ITelegramCommand
+    public class AdviceCommand : ITelegramCommand
     {
         /// <inheritdoc/>
-        public string Name { get; } = Constant.START_COMMAND;
+        public string Name { get; } = Constant.ADVICE_COMMAND;
 
         /// <inheritdoc/>
         public async Task Execute(Message message, ITelegramBotClient client)
         {
             var chatId = message.Chat.Id;
-            await client.SendTextMessageAsync(chatId, string.Format(Constant.SAY_HI, message.Chat.Username));
+            string advice = await HttpHandler.GetRandomAdviceAsync();
+            await client.SendTextMessageAsync(chatId, advice);
         }
 
         /// <inheritdoc/>

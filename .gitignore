@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 
 Yaroshinski.Bot/appsettings.json
+Yaroshinski.Bot/.config/dotnet-tools.json
