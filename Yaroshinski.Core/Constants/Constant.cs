@@ -35,6 +35,8 @@
         /// </summary>
         public const string NO_ADVICE_BY_KEY_WORD = "No advices with word '{0}' was found. Or u type more than 1 word.";
 
+        public const string ERROOR_BY_EMPTY_KEY_WORD = "Error: type /key 'key-word'!";
+
         /// <summary>
         /// Domain link for API.
         /// </summary>
