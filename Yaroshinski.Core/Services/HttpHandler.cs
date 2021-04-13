@@ -57,9 +57,13 @@ namespace Yaroshinski.Core.Services
 
                 return response.Slips[rnd.Next(0, response.Slips.Length)].Advice;
             }
+            catch (ArgumentException)
+            {
+                return Constant.ERROOR_BY_EMPTY_KEY_WORD;
+            }
             catch (Exception)
             {
-                return string.Format(Constant.NO_ADVICE_BY_KEY_WORD, " ");
+                return string.Format(Constant.NO_ADVICE_BY_KEY_WORD, key);
             }
         }
     }
